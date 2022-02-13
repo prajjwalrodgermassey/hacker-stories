@@ -1,8 +1,10 @@
-These are my personalized notes which are I've drafted to for my convenience and better understanding of some core concepts
+KINDLY VIEW THESE NOTES IN RAW FORMAT TO UNDERSTAND:-
+These are my personalized notes which are I've drafted to for my convenience and better understanding of some core concepts.
 
 1) App.js is an JS document therefore must follow all the rules of the JS.
 
 2) JS code in ReactJS that is inside the HTML tag is not known to the code outside of the tag.
+	
 	For example:- 
 	<div> function fun() {return "i am inside div"} </div>
 	This function fun will not be known to the code outside of the div tag.
@@ -13,6 +15,7 @@ These are my personalized notes which are I've drafted to for my convenience and
 	This function fun will be known to the div tag and other tags [fun() is global]
 
 3) JS in ReactJS that is inside the HTML tag should make sense.
+	
 	For example:-
 	const greeting = "how are you"
 	function fun(){
@@ -34,4 +37,44 @@ These are my personalized notes which are I've drafted to for my convenience and
 			}
 		</div>
 	The above code will run as the 'return' statement is associated with the 'notsofun()' function.
-		  
+
+4) We cannot declare a variable inside the HTML tag we can only declare functions and return from them but those functions will also be not accessible outside the HTML tag.		  
+	
+	For Example :- 
+	function Fun(){
+		<div>
+		    { 
+      			function notsofun(){ 
+      			notsofun();
+      			return "not so fun";
+    			}
+    		    }
+  		</div>
+
+  	return (<div>{"it is ultimate fun"}</div>)
+	}
+	In the above example the function 'Fun()' can be rendered but the function 'notsofun()' is declared inside the <div> tag and therefore cannot be accessed beyond that tag.
+	
+*****
+JUST A QUICK IMPORTANT TIP:- Always remember that while using App.js file in src folder while using ReactJS all the HTML tags will be placed inside the *"return"* statement. The tags outside the "return" statement of a function will never be read by the interpreter they will be skipped or will cause an error in one way or another.
+One way to better understand is that App.js is a JavaScript file and not an HTML file so in order to use the HTML tags you have to make them a part of the JavaScript BY MAKING THEM A PART OF THE "RETURN" STATEMENT OF A FUNCTION OR ELSE THOSE TAGS WILL NEVER BE READ. LIKE YOU USE <SCRIPT> TAG TO MAKE JAVASCRIPT A PART OF THE HTML FILE.
+*****	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
