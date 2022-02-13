@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
+var greeting = "how are you?"
 const title = "react";
 function setTitle(title)
 {
@@ -32,10 +33,11 @@ function App() {
       <h2>welcome to the world of {setTitle("reactjs")}</h2>
       <label htmlFor = "search ">Search</label>
       <input type = "text" id = "search" />
+      <div>{outernotsofun()}</div>
       <hr/>
 
       <List/>
-
+       <Fun />
     </div>
   );
 }
@@ -63,7 +65,25 @@ function List ()
     );
 
 }
-  
+
+function Fun(){
+
+  <div>
+    { 
+      function Notsofun(){ 
+      Notsofun();
+      return "not so fun";
+      }
+    }
+  </div>
+
+  return (<div>{"it is ultimate fun"}</div>)
+}
+
+function outernotsofun()
+{
+  return "I'm the outer not so fun function."
+}
 
 
 export default App;
