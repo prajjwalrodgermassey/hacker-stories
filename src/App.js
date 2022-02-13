@@ -33,11 +33,11 @@ function App() {
       <h2>welcome to the world of {setTitle("reactjs")}</h2>
       <label htmlFor = "search ">Search</label>
       <input type = "text" id = "search" />
-      <div>{outernotsofun()}</div>
+      {/* <div>{outernotsofun()}</div> */}
       <hr/>
 
       <List/>
-       <Fun />
+       {/* <Fun /> */}
     </div>
   );
 }
@@ -63,10 +63,11 @@ function List ()
             }
         </ol>
     );
-
 }
 
-function Fun(){
+export default App;
+
+/*function Fun(){
 
   <div>
     { 
@@ -85,5 +86,4 @@ function outernotsofun()
   return "I'm the outer not so fun function."
 }
 
-
-export default App;
+*/
