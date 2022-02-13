@@ -4,11 +4,19 @@ import './App.css';
 const title = "react";
 const list = [
              { title:"react",
-               url:"https://reactjs.org"
+               url:"https://reactjs.org",
+               objectId:"0",
+               author:"js author",
+               num_comments:"23",
+               points:"57",
              },
              {
                title:'redux',
-               url:"https://redux.js.org/"
+               url:"https://redux.js.org/",
+               objectId:"1",
+               author:"redux author",
+               num_comments:"1",
+               points:"50",
              }
              ]
 
@@ -21,12 +29,24 @@ function App() {
       <input type = "text" id = "search" />
       <hr/>
 
-      {list.map(item =>{
-            return <div> {item.title + "strong"}</div>;
-      })}
+      <List/>
 
     </div>
   );
+}
+
+function List(){
+
+  return list.map(function(item){
+   return(
+   <div key={item.objectId}>
+      <span><a href={item.url}>{item.title}</a></span>
+      <span>{item.author}</span>
+      <span>{item.num_comments}</span>
+      <span>{item.points}</span>
+    </div>
+   );
+  })
 }
 
 export default App;
