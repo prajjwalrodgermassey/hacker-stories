@@ -8,25 +8,27 @@ function setTitle(title)
   return title;
 }
 
-const list = [
-             { title:"react",
-               url:"https://reactjs.org",
-               objectId:"0",
-               author:"js author",
-               num_comments:"23",
-               points:"57",
-             },
-             {
-               title:'redux',
-               url:"https://redux.js.org/",
-               objectId:"1",
-               author:"redux author",
-               num_comments:"1",
-               points:"50",
-             }
-             ]
 
 function App() {
+
+  const stories = [
+    { title:"reactstories(props)",
+      url:"https://reactjs.org",
+      objectId:"0",
+      author:"js author",
+      num_comments:"23",
+      points:"57",
+    },
+    {
+      title:'reduxstories(props)',
+      url:"https://redux.js.org/",
+      objectId:"1",
+      author:"redux author",
+      num_comments:"1",
+      points:"50",
+    }
+    ];
+
 
   const handleChange = (event)=> 
     console.log(event.target.value);             // this line will act as return statement. while using arrow functions we can omit return 
@@ -40,19 +42,18 @@ function App() {
       <input type = "text" id = "search" onChange={handleChange}/>
       {/* <div>{outernotsofun()}</div> */}
       <hr/>
-
-      <List/>
+      <List list={stories}/>
        {/* <Fun /> */}
     </div>
   );
 }
 
-function List () 
+const List = props =>  
 {
     return (
         <ol>
             {
-              list.map(function(item)
+              props.list.map(item=>
               {
                   return (
                       <li key={item.objectId}>
@@ -67,8 +68,8 @@ function List ()
               )
             }
         </ol>
-    );
-}
+    )
+  }
 
 export default App;
 
