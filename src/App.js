@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -10,6 +11,8 @@ function setTitle(title)
 
 
 function App() {
+
+  const [searchTerm, setSearchTerm] = React.useState('');
 
   const stories = [
     { title:"reactstories(props)",
@@ -29,19 +32,25 @@ function App() {
     }
     ];
 
+  const handleSearch = (event)=>
+    console.log(event.target.value);
 
   const handleChange = (event)=> 
-    console.log(event.target.value);             // this line will act as return statement. while using arrow functions we can omit return 
-                                    // return statement if the function contains single line.
+    setSearchTerm(event.target.value);
+      
+    // this line will act as return statement. while using arrow functions we can omit return 
+                                         // return statement if the function contains single line.
 
   return (
     <div>
       <h1>Hello World!</h1>
       <h2>welcome to the world of {setTitle("reactjs")}</h2>
-      <label htmlFor = "search ">Search</label>
-      <input type = "text" id = "search" onChange={handleChange}/>
+      
       {/* <div>{outernotsofun()}</div> */}
+      
+      <Search onSearch={handleSearch}/>
       <hr/>
+      
       <List list={stories}/>
        {/* <Fun /> */}
     </div>
@@ -70,6 +79,28 @@ const List = props =>
         </ol>
     )
   }
+
+const Search = (props)=>{
+  
+  const [searchTerm, setSearchTerm] = React.useState("");
+  function handleChange(event){
+    setSearchTerm(event.target.value);
+    props.onSearch(event);
+  }
+
+  
+  
+  return(
+  <div>
+    <label htmlFor='search'> SEARCH </label>
+    <input type="text" id="search" onChange={handleChange}/>
+    <p>Your search term is : <strong>{searchTerm}.</strong></p>
+  </div>
+  );
+
+}
+
+
 
 export default App;
 
