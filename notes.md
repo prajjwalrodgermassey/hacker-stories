@@ -1,5 +1,5 @@
 KINDLY VIEW THESE NOTES IN RAW FORMAT TO UNDERSTAND:-
-These are my personalized notes which are I've drafted to for my convenience and better understanding of some core concepts.
+These are my personalized notes which I've drafted for my convenience and better understanding of some core concepts.
 
 1) App.js is an JS document therefore must follow all the rules of the JS.
 
@@ -60,13 +60,36 @@ JUST A QUICK IMPORTANT TIP:- Always remember that while using App.js file in src
 One way to better understand is that App.js is a JavaScript file and not an HTML file so in order to use the HTML tags you have to make them a part of the JavaScript BY MAKING THEM A PART OF THE "RETURN" STATEMENT OF A FUNCTION OR ELSE THOSE TAGS WILL NEVER BE READ. LIKE YOU USE <SCRIPT> TAG TO MAKE JAVASCRIPT A PART OF THE HTML FILE.
 *****	
 	
+5) States are used to make our pages interactive. To manage states we use some predefined functions in JavaScript which are called 'HOOKS'. One such hook is called 'useState' which is used to specify the initial state. The reutrn value of the 'useState' hook is an array which is destructured into an array variable, whose first element is the 'current state', and the 2nd element is the function that is used to update the state.  	
+	For Example :- const [searchTerm, setSearchTerm] = React.useState("")
+	We have to use import {useState} from the 'react'
+	searchTerm is the current value of state.
+	Whereas, setSearchTerm is a 'function' that is used to update the state.
+
+***** 
+IMPORTANT :- Whenever a state is updated the component associated with it automatically re-renders with the updated state.
+*****	
 	
+6) We have used "props" (properties) objects to communicate and share data between the componenets. Props are immutable and are uni-directional meaning only the parent component can send data to the child component. Props are objects.
+	For Example :- function handleSearch(event){
+				setSearchTerm(event.target.value);}	
+		       <List list={handleSearch}/>
+	In the above example we have sent handleSearch 'function' as a part of the 'PROP' object to the List component. We can now use this handleSearch in List component like :- prop.list.
 	
+7) But 'props' are unidirectional we can only send information from parent component to child component. In order to set up a communication from child to parent component we use "CALLBACK HANDLERS" using callback handler we can communicate with parent component from the child component.
 	
+	For Example :-  function handleSearch(event){
+				setSearchTerm(event.target.value)};
+				
+			<List onSearch={handleSearch}>
+			function List(props)
+			{
+				return(
+				<input type="text" onChange={props.onSearch}/>
+				)
+			}
 	
-	
-	
-	
+	In the above example handleSearch function is in the parent component but it is passed as 'onSearch' property of the prop object to the List component where it is associated with the input element(s) onChange property. So the handleSearch function is invoked from the child component (List) and is executed in the parent component (App). The event passed to the 'handleSearch' function is the event associated with the input element, which is in the child component (List).
 	
 	
 	
