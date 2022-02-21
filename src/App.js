@@ -12,11 +12,15 @@ function setTitle(title)
 
 function App() {
 
-  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState(localStorage.getItem('search') || "" );
 
   const handleSearch = (event)=>{
   return ( setSearchTerm(event.target.value)
   )};
+  
+  //console.log("render")
+
+  React.useEffect(()=>{localStorage.setItem('search',searchTerm)}, [searchTerm]);
 
   const stories = [
     { title:"REACTstories(props)",
@@ -48,7 +52,7 @@ function App() {
 
   return (
     <div>
-      <h1>Hello World!</h1>
+      <h1>Hello World! </h1>
       <h2>welcome to the world of {setTitle("reactjs")}</h2>
       
       {/* <div>{outernotsofun()}</div> */}
