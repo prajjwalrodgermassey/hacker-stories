@@ -110,6 +110,16 @@ IMPORTANT :- Whenever a state is updated the component associated with it automa
  ***** 			By passing the value of the 'searchTerm' state to the Search component and then using that value to change the value attribute of the input element we control the internal value of the input element using the react state 'searchTerm'. Therefore the 'search' component is a controlled component as the value of its element is controlled by the 'searchTerm' state. *****
 	
 	
+9) useEffect() hook :- we are using useEffect hook to capture the side-effect caused by the change in the state and then using that change to perform some action accordingly. The useEffect() takes 2 parameters:- a) the first one is a function that performs certain task that we want to do and b) second is the optional parameter called "Dependency Array" we pass elements in this array and if any of the element of this array changes then only the useEffect() hook is executed.
+
+	For Example :- const[searchTerm,setSearchTerm] = React.useState("react")
+		       
+		       React.useEffect(()=>{console.log("a change in searchTerm")},[searchTerm]); 
+		 
+	Everytime the state changes the component re-renders and whenever the searchTerm is changed useEffect hook is executed. Passing an "Empty Dependency Array" will cause the useEffect hook to run only at the time when the component is initially mounted for the first time WHEREAS passing "No Dependency Array" will cause the useEffect hook to run everytime the component re-renders.
+
+****** IMPORTANT :- THE STATE IS JUST A PLAIN JAVASCRIPT OBJECT THAT IS USED BY "REACTJS" TO STORE THE CURRENT SITUATION OF THE COMPONENT.******
+****** IMPORTANT :- THE SIDE EFFECT IS ANYTHING THAT AFFECTS SOMETHING THAT IS OUTSIDE OF THE SCOPE OF THE FUNCTION. FOR EXAMPLE:- IN THE ABOVE CASE THE "console.log()" FUNCTION IS A SIDE-EFFECT AS IT PRINTS ONTO THE CONSOLE WINDOW (WHICH IS OUTSIDE OF THE SCOPE OF THE FUNCTION DECLARED IN "useEffect" hook.******
 	
 	
 	
