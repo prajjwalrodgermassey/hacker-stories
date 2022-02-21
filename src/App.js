@@ -14,11 +14,12 @@ function App() {
 
   const [searchTerm, setSearchTerm] = React.useState("");
 
-  const handleSearch = (event)=>
-  setSearchTerm(event.target.value);
+  const handleSearch = (event)=>{
+  return ( setSearchTerm(event.target.value)
+  )};
 
   const stories = [
-    { title:"reactstories(props)",
+    { title:"REACTstories(props)",
       url:"https://reactjs.org",
       objectId:"0",
       author:"js author",
@@ -26,7 +27,7 @@ function App() {
       points:"57",
     },
     {
-      title:'reduxstories(props)',
+      title:'REDUXstories(props)',
       url:"https://redux.js.org/",
       objectId:"1",
       author:"redux author",
@@ -36,7 +37,7 @@ function App() {
     ];
 
   const searchedStories = stories.filter(story => 
-    story.title.includes(searchTerm));
+    story.title.toLowerCase().includes(searchTerm.toLowerCase()));
   
 
  // const handleChange = (event)=> 
@@ -52,7 +53,7 @@ function App() {
       
       {/* <div>{outernotsofun()}</div> */}
       
-      <Search onSearch={handleSearch} term={searchTerm}/>
+      <Search onSearch={handleSearch} search={searchTerm}/>
       <p>Your search term is : <strong>{searchTerm}.</strong></p>
       <hr/>
       
@@ -60,6 +61,18 @@ function App() {
        {/* <Fun /> */}
     </div>
   );
+}
+
+const Search = (props)=>{
+  
+  return(
+  <div>
+    <label htmlFor='search'> SEARCH </label>
+    <input type="text" id="search" onChange={props.onSearch} value={props.search}/>
+    
+  </div>
+  );
+
 }
 
 const List = props =>  
@@ -85,17 +98,7 @@ const List = props =>
     )
   }
 
-const Search = (props)=>{
-  
-  return(
-  <div>
-    <label htmlFor='search'> SEARCH </label>
-    <input type="text" id="search" onChange={props.onSearch}/>
-    
-  </div>
-  );
 
-}
 
 
 
