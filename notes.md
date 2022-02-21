@@ -91,7 +91,23 @@ IMPORTANT :- Whenever a state is updated the component associated with it automa
 	
 	In the above example handleSearch function is in the parent component but it is passed as 'onSearch' property of the prop object to the List component where it is associated with the input element(s) onChange property. So the handleSearch function is invoked from the child component (List) and is executed in the parent component (App). The event passed to the 'handleSearch' function is the event associated with the input element, which is in the child component (List).
 	
-	
+8) Controlled Component :- Controlled component is the component whose value is in sync with the state of the react dom. So in order to make a component a controlled component we use the state(s) current and initial value to control the behaviour/value of the component.
+
+	For example :- const [searchTerm, setSearchTerm] = React.useState("")
+			const handleSearch = (event)=>{
+  				return ( setSearchTerm(event.target.value)
+  				)};	
+  			 <Search onSearch={handleSearch} search={searchTerm}/>
+  			 const Search = (props)=>{
+  
+			return(
+  			<div>
+    			<label htmlFor='search'> SEARCH </label>
+    			<input type="text" id="search" onChange={props.onSearch value={props.search}/>
+     			</div>
+  );
+  
+ ***** 			By passing the value of the 'searchTerm' state to the Search component and then using that value to change the value attribute of the input element we control the internal value of the input element using the react state 'searchTerm'. Therefore the 'search' component is a controlled component as the value of its element is controlled by the 'searchTerm' state. *****
 	
 	
 	
