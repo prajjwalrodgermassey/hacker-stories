@@ -66,7 +66,7 @@ function App() {
       
       {/* <div>{outernotsofun()}</div> */}
       
-      <Search onSearch={handleSearch} search={searchTerm}/>
+      <Inputwithlabel onInputChange={handleSearch} value={searchTerm} id="search" label="Search"/>
       <p>Your search term is : <strong>{searchTerm}.</strong></p>
       <hr/>
       
@@ -76,12 +76,12 @@ function App() {
   );
 }
 
-const Search = (props)=>{
+const Inputwithlabel = ({id,label,onInputChange,value, type="text"})=>{
   
   return(
   <>
-    <label htmlFor='search' > SEARCH </label>
-    <input type="text" id="search"  onChange={props.onSearch} value={props.search}/>
+    <label htmlFor={id} > SEARCH </label>
+    <input type={type} id={id}  onChange={onInputChange} value={value}/>
   </>
   );
 }
