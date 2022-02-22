@@ -8,11 +8,20 @@ function setTitle(title)
 {
   return title;
 }
+// creating custom hook
 
+function useSemiPersistentState( key, initialState)
+{
+  const [value, setValue] = React.useState(localStorage.getItem(key) || initialState);
+
+  React.useEffect(()=>{localStorage.setItem(key,value)},[key, value]);
+
+  return [value, setValue];
+}
 
 function App() {
 
-  const [searchTerm, setSearchTerm] = React.useState(localStorage.getItem('search') || "" );
+  const [searchTerm, setSearchTerm] = useSemiPersistentState(localStorage.getItem('search'), "react" );
 
   const handleSearch = (event)=>{
   return ( setSearchTerm(event.target.value)
@@ -20,7 +29,7 @@ function App() {
   
   //console.log("render")
 
-  React.useEffect(()=>{localStorage.setItem('search',searchTerm)}, [searchTerm]);
+//  React.useEffect(()=>{localStorage.setItem('search',searchTerm)}, [searchTerm]);
 
   const stories = [
     { title:"REACTstories(props)",
@@ -70,13 +79,11 @@ function App() {
 const Search = (props)=>{
   
   return(
-  <div>
-    <label htmlFor='search'> SEARCH </label>
-    <input type="text" id="search" onChange={props.onSearch} value={props.search}/>
-    
-  </div>
+  <>
+    <label htmlFor='search' > SEARCH </label>
+    <input type="text" id="search"  onChange={props.onSearch} value={props.search}/>
+  </>
   );
-
 }
 
 const List = props =>  
