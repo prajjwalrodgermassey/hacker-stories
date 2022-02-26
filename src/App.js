@@ -66,7 +66,7 @@ function App() {
       
       {/* <div>{outernotsofun()}</div> */}
       
-      <Inputwithlabel onInputChange={handleSearch} value={searchTerm} id="search" label="Search">
+      <Inputwithlabel onInputChange={handleSearch} value={searchTerm} id="search" label="Search" isFocused >
        <strong>Search :</strong> 
       </Inputwithlabel>
       <p>Your search term is : <strong>{searchTerm}.</strong></p>
@@ -78,12 +78,20 @@ function App() {
   );
 }
 
-const Inputwithlabel = ({id,label,onInputChange,value, children, type="text"})=>{
+const Inputwithlabel = ({id,label,onInputChange,value, children, type="text", isFocused})=>{
   
+  const inputRef = React.useRef(null);
+
+  React.useEffect(()=>{
+    if (isFocused && inputRef.current){
+      inputRef.current.focus();
+    }
+  },[isFocused])
+
   return(
   <>
     <label htmlFor={id} > {children} </label>&nbsp;
-    <input type={type} id={id}  onChange={onInputChange} value={value}/>
+    <input type={type} id={id}  onChange={onInputChange} value={value} autoFocus={isFocused} ref={inputRef} />
   </>
   );
 }
