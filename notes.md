@@ -176,4 +176,64 @@ We can also use a list to wrap multiple components side by side but we will have
 	
 	All the 3 examples given above will render the same output on the screen, we are just using 3 different ways to wrap top-level elements side-by-side.
 	
+12) Composition in react components:- We can also use the reactJS components as normal we use normal HTML Tags i.e. alongwith opening and closing tags. The contents between the opening and closing tags can be passed along as the "children" property of the props which can be further used in the child component wherever we want to render it.
+	For Example :- <Inputwithlabel onInputChange={handleSearch} value={searchTerm} id="search" label="Search" isFocused >
+       			<strong>Search :</strong> 
+      			</Inputwithlabel>
+      			
+      			const Inputwithlabel = ({id,label,onInputChange,value, children, type="text", isFocused})=>{
+  
+  			const inputRef = React.useRef(null);
+
+  			React.useEffect(()=>{
+    			if (isFocused && inputRef.current){
+      			inputRef.current.focus();
+    			}
+  			},[isFocused])
+
+ 			 return(
+  			<>
+  			  <label htmlFor={id} > {children} </label>&nbsp;
+   			 <input type={type} id={id}  onChange={onInputChange} value={value} autoFocus={isFocused} ref={inputRef} />
+  			</>
+  			);
+			}
+			
+	In our above example we have our component as Inputwithlabel which the "Search" as its contents we have passed this content as "children" to the child component and we have used it to render the desired content wherever we want to in the child component.
+
+***** We can also pass other components as "children" property to the child component.*****
+
+13) useRef() HOOK :- useRef hook is used to create a "MUTABLE" reference object. Whose ".current" property is initialized with the passed arguments (inital value). Then this reference object is passed to the reserved "ref" attribute of the JSX element and the elemetn('s') instance is assigned to the changeable ".cuurent" property of the reference object.
+
+	For Example :-  const Inputwithlabel = ({id,label,onInputChange,value, children, type="text", isFocused})=>{
+  
+  			const inputRef = React.useRef(null);
+  			
+			React.useEffect(()=>{
+    			if (isFocused && inputRef.current){
+      			inputRef.current.focus();
+    			}
+  			},[isFocused])
+
+ 			 return(
+  			<>
+   			 <label htmlFor={id} > {children} </label>&nbsp;
+   			 <input type={type} id={id}  onChange={onInputChange} value={value} autoFocus={isFocused} ref={inputRef} />
+  			</>
+  			);
+			} 
+			
+	In the above exmple we have used useRef() HOOK to create a reference object, and have initialized its current property with null. Then we have passed this object to the "ref" attribute of the input JSX element. It is the place where the instance of the input element is assigned to the ".cuurent" of the reference object. Here we are using this ".current" property to access or to reference the DOM element "input" and set focus to it. useEffect() HOOK will be called after the input element renders.    
+
+
+
+
+
+
+
+
+
+
+
+	
 	
